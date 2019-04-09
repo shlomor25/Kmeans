@@ -1,21 +1,15 @@
 import numpy as np
-import scipy.io as sio
-import matplotlib.pyplot as plt
-from scipy.misc import imread
-
 
 
 def init_centroids(X, K):
     """
     Initializes K centroids that are to be used in K-Means on the dataset X.
-
     Parameters
     ----------
     X : ndarray, shape (n_samples, n_features)
         Samples, where n_samples is the number of samples and n_features is the number of features.
     K : int
         The number of centroids.
-
     Returns
     -------
     centroids : ndarray, shape (K, n_features)
@@ -57,45 +51,3 @@ def init_centroids(X, K):
     else:
         print('This value of K is not supported.')
         return None
-
-
-def distance(a, b):
-    return np.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2)
-
-
-# data preparation (loading, normalizing, reshaping)
-def show_picture():
-    path = 'dog.jpeg'
-    A = imread(path)
-    A_norm = A.astype(float) / 255.
-    img_size = A_norm.shape
-    X = A_norm.reshape(img_size[0] * img_size[1], img_size[2])
-
-    # plot the image
-    plt.imshow(A_norm)
-    plt.grid(False)
-    plt.show()
-    return X
-
-
-'''
-X = show_picture()
-karry = [2, 4, 8, 16]
-for K in karry:
-    nd = init_centroids(X, K)
-'''
-k=2
-X = show_picture()
-centroids = init_centroids(X, 2)
-clusters = [[]]
-
-for p in X:
-    min = float("inf")
-    kmin = 0
-    for c in range(k):
-        if distance(centroids[k], p) < min:
-            min = distance(centroids[k], p)
-            kmin = k
-    clusters.a
-
-
