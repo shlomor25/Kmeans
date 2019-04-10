@@ -36,18 +36,17 @@ def KMeans(X, k):
     C = init_centroids(X, k)
     clusters = np.zeros(len(X))
     # 10 iterations
-    for b in range(11):
+    for iter in range(11):
         # Assigning each value to its closest cluster
         for i in range(len(X)):
             distances = distance(X[i], C)
             cluster = np.argmin(distances)
             clusters[i] = cluster
         # Finding the new centroids by taking the average value
-        print_iter(b, C)
+        print_iter(iter, C)
         for i in range(k):
             points = [X[j] for j in range(len(X)) if clusters[j] == i]
             C[i] = np.mean(points, axis=0)
-
 
 if __name__ == "__main__":
     K = [2, 4, 8, 16]
